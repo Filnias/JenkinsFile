@@ -1,13 +1,21 @@
+pipeline {
+    agent any
 
-node{
-   
-    if (params.isFoo){
-        echo ('oui')
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building..'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
     }
-    else{
-        echo ('non')
-    }
-    
-    
-    
 }
