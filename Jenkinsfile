@@ -1,16 +1,19 @@
 pipeline {
-    agent any
-    environment  {
-        CC= 'clang'
+    agent {
+        label '!windows'
     }
+
+    environment {
+        DISABLE_AUTH = 'true'
+        DB_ENGINE    = 'sqlite'
+    }
+
     stages {
-        
-        stage('Example') {
-            environment  {
-                DEBUG_FLAGS='-g'
-            }
+        stage('Build') {
             steps {
-                echo "printenv"           
+                echo "Database engine is ${DB_ENGINE}"
+                echo "DISABLE_AUTH is ${DISABLE_AUTH}"
+                sh 'printenv'
             }
         }
     }
